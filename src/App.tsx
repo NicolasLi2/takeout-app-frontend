@@ -5,6 +5,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AppLayout from './ui/AppLayout';
 import Home from './ui/Home';
 import Error from './ui/Error';
+import { Cloudinary } from '@cloudinary/url-gen';
+import Menu from './features/menu/Menu';
+
+const cld = new Cloudinary({
+    cloud: {
+        cloudName: 'dzociog2r',
+    },
+});
 
 const router = createBrowserRouter([
     {
