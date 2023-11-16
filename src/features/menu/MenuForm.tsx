@@ -80,6 +80,7 @@ export default function MenuForm<IFileInputProps>() {
                     <input
                         id='price'
                         type='number'
+                        step='0.01'
                         className={inputStyle}
                         {...methods.register('unitPrice')}
                     />

@@ -7,12 +7,11 @@ import Home from './ui/Home';
 import Error from './ui/Error';
 import { Cloudinary } from '@cloudinary/url-gen';
 import Menu from './features/menu/Menu';
-
-const cld = new Cloudinary({
-    cloud: {
-        cloudName: 'dzociog2r',
-    },
-});
+import MenuForm from './features/menu/MenuForm';
+import { getMenu } from './api/menu';
+import Cart from './features/cart/Cart';
+import CreateOrder from './features/order/CreateOrder';
+import { orderAction } from './features/order/orderAction';
 
 const router = createBrowserRouter([
     {
@@ -26,7 +25,25 @@ const router = createBrowserRouter([
             {
                 path: '/menu',
                 element: <Menu />,
+                loader: async () => {
+                    const { data } = await getMenu();
+                    return data;
+                },
                 errorElement: <Error />,
+            },
+            {
+                path: '/create-menu',
+                element: <MenuForm />,
+                errorElement: <Error />,
+            },
+            {
+                path: '/cart',
+                element: <Cart />,
+            },
+            {
+                path: '/order/new',
+                element: <CreateOrder />,
+                action: orderAction,
             },
         ],
     },
