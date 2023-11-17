@@ -12,3 +12,9 @@ export const createOrder = async (newOrder) => {
         throw new Error('Failed creating your order');
     }
 };
+
+export const getOrder = async (id) => {
+    const { data } = await client.get(`/order/get-order/${id}`);
+
+    return data;
+};
